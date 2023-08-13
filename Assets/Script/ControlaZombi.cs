@@ -6,7 +6,18 @@ public class ControlaZombi : MonoBehaviour
 {
     public GameObject Player;
     public float Velocidade = 5;
-    
+
+    public int vida = 3;
+
+    public void SofrerDano(int dano)
+    {
+        vida -= dano;
+        if (vida <= 0)
+        {
+            Morrer();
+        }
+    }
+
     void FixedUpdate()
     {
         float distancia = Vector3.Distance(transform.position, Player.transform.position);
@@ -15,7 +26,7 @@ public class ControlaZombi : MonoBehaviour
         Quaternion novaRotacao = Quaternion.LookRotation(direcaoJogador);
         GetComponent<Rigidbody>().MoveRotation(novaRotacao);
  
-        if(distancia > 0.01)
+        if(distancia > 0.2)
         {
              Vector3 direcao = Player.transform.position - transform.position;
             GetComponent<Rigidbody>().MovePosition
@@ -28,5 +39,10 @@ public class ControlaZombi : MonoBehaviour
             GetComponent<Animator>().SetBool("Ataque", true);
         }
        
+    }
+
+    void Morrer()
+    {
+        Destroy(gameObject, 2f); // Destrua o objeto do inimigo após um tempo
     }
 }
