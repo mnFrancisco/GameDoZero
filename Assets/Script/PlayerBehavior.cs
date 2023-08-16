@@ -5,14 +5,10 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float Velocidade = 8;
-    public GameObject bulletPrefab;
-    public Transform bulletSpawnPoint;
-    public Transform SecondBulletSpawnPoint;
-
+    public LayerMask MascaraChao;
     private Vector3 direcao;
 
-    void Update()
-    {
+    void Update(){
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
 
@@ -20,53 +16,30 @@ public class PlayerBehavior : MonoBehaviour
 
         if (direcao != Vector3.zero){
             GetComponent<Animator>().SetBool("Correndo", true);
-            Vector3 direcaoJogador = new Vector3(eixoX, 0, eixoZ);
+            /*Vector3 direcaoJogador = new Vector3(eixoX, 0, eixoZ);
             Quaternion novaRotacao = Quaternion.LookRotation(direcaoJogador);
-            transform.rotation = novaRotacao;
+            transform.rotation = novaRotacao;*/
         }
         else{
             GetComponent<Animator>().SetBool("Correndo", false);
         }
-        if (Input.GetButtonDown("Fire1")){
-            Shoot();
-        }
+        
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao * Time.fixedDeltaTime * Velocidade));
-    }
+        Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
 
-    void Shoot()
-    {
-        if (bulletPrefab && bulletSpawnPoint)
+        RaycastHit impacto;
+        if(Physics.Raycast(raio, out impacto, 100, MascaraChao))
         {
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            if (bulletRigidbody)
-            {
-                bulletRigidbody.velocity = transform.forward * 10f; // Movimento constante para a frente
-            }
+            Vector3 posicaoMiraJogador = impacto.point - transform.position;
+            posicaoMiraJogador.y = transform.position.y;
+            Quaternion novaRotacao = Quaternion.LookRotation(posicaoMiraJogador);
+            GetComponent<Rigidbody>().MoveRotation(novaRotacao);
         }
-
-        if (bulletPrefab && SecondBulletSpawnPoint)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, SecondBulletSpawnPoint.position, Quaternion.identity);
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            if (bulletRigidbody)
-            {
-                bulletRigidbody.velocity = transform.forward * 10f; // Movimento constante para a frente
-            }
-        }
-
-        // Ativa a animação de tiro
-        GetComponent<Animator>().SetBool("Atirar", true);
-
-        // Reinicia o parâmetro de animação após um tempo para que a animação possa ser repetida
-        Invoke("ResetAnimacaoTiro", 0.5f);
     }
-    void ResetAnimacaoTiro(){
-        GetComponent<Animator>().SetBool("Atirar", false);
-    }
+
 
 }

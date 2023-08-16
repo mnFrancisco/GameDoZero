@@ -6,6 +6,7 @@ public class ControlaZombi : MonoBehaviour
 {
     public GameObject Player;
     public float Velocidade = 5;
+    public float areaAtake = 5;
 
     public int vida = 3;
 
@@ -25,7 +26,7 @@ public class ControlaZombi : MonoBehaviour
         Quaternion novaRotacao = Quaternion.LookRotation(direcaoJogador);
         GetComponent<Rigidbody>().MoveRotation(novaRotacao);
  
-        if(distancia > 0.2){
+        if(distancia > areaAtake){
 
              Vector3 direcao = Player.transform.position - transform.position;
             GetComponent<Rigidbody>().MovePosition
