@@ -6,9 +6,11 @@ public class PlayerBehavior : MonoBehaviour
 {
     public float Velocidade = 8;
     public LayerMask MascaraChao;
+    
     private Vector3 direcao;
 
     void Update(){
+
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
 
@@ -25,6 +27,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         
     }
+
 
     void FixedUpdate(){
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao * Time.fixedDeltaTime * Velocidade));

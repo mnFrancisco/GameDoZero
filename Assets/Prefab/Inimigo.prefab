@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: f88c8301226fd194cbbc64e25b20d567, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.12
+      value: -8.69552
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: f88c8301226fd194cbbc64e25b20d567, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15213084
+      value: -0.15213275
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: f88c8301226fd194cbbc64e25b20d567, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.4
+      value: -37.17331
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: f88c8301226fd194cbbc64e25b20d567, type: 3}
       propertyPath: m_LocalRotation.w
@@ -105,10 +105,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4191717
-  m_Height: 1.6448934
+  m_Radius: 0.74591494
+  m_Height: 1.59479
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7641286, z: -0.0808283}
+  m_Center: {x: -0.016746044, y: 0.78456473, z: -0.018673778}
 --- !u!95 &3475212972186085447
 Animator:
   serializedVersion: 4
@@ -143,5 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   Velocidade: 10
-  areaAtake: 6
+  areaAtake: 5
+  dano: 10
   vida: 3
