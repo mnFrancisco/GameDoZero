@@ -10,9 +10,10 @@ public class controlaDisparo : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetButtonDown ("Fire1"))
+        if(Input.GetButtonDown ("Fire1"))
         {
             Instantiate(Bala, Disparo.transform.position, Disparo.transform.rotation);
+            
         }
     }
 }

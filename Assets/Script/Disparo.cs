@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Disparo : MonoBehaviour
+
 {
     public float Velocidade = 20;
-    
     public int dano = 1;
-    // Update is called once per frame
+
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().MovePosition
-            (GetComponent<Rigidbody>().position + 
+        GetComponent<Rigidbody>().MovePosition(
+            GetComponent<Rigidbody>().position +
             transform.forward * Velocidade * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider objetoDeColisao)
     {
-        ControlaZombi inimigo = other.GetComponent<ControlaZombi>();
-        if (inimigo != null)
+        if (objetoDeColisao.CompareTag("Inimigo"))
         {
-            inimigo.SofrerDano(dano);
-            Destroy(gameObject); // Destrua a bala após acertar um inimigo
+            ControlaZombi inimigo = objetoDeColisao.GetComponent<ControlaZombi>();
+            if (inimigo != null){
+                inimigo.SofrerDano(dano); // Chame o método para causar dano ao inimigo
+            }
         }
+        Destroy(gameObject); // Destrua a bala independentemente da colisão
     }
 }
 

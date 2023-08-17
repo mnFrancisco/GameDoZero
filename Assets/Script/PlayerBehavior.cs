@@ -32,7 +32,7 @@ public class PlayerBehavior : MonoBehaviour
     void FixedUpdate(){
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao * Time.fixedDeltaTime * Velocidade));
         Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
+        //Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
 
         RaycastHit impacto;
         if(Physics.Raycast(raio, out impacto, 100, MascaraChao))

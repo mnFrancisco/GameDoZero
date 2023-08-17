@@ -41,6 +41,11 @@ public class ControlaZombi : MonoBehaviour
        
     }
 
+    void AtacaJogador(){
+
+        Time.timeScale = 0;
+    }
+
     void Morrer(){
 
         Destroy(gameObject, 0.1f); // Destrua o objeto do inimigo após um tempo
