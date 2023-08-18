@@ -18,6 +18,10 @@ public class ControlaZombi : MonoBehaviour
         }
     }
 
+    void Start(){
+        Player = GameObject.FindWithTag("Player");
+    }
+
     void FixedUpdate(){
         
         float distancia = Vector3.Distance(transform.position, Player.transform.position);
@@ -29,9 +33,7 @@ public class ControlaZombi : MonoBehaviour
         if(distancia > areaAtake){
 
              Vector3 direcao = Player.transform.position - transform.position;
-            GetComponent<Rigidbody>().MovePosition
-            (GetComponent<Rigidbody>().position + 
-            (direcao.normalized * Velocidade * Time.deltaTime));
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * Velocidade * Time.deltaTime));
             GetComponent<Animator>().SetBool("Ataque", false); 
         }
         else{
@@ -43,7 +45,10 @@ public class ControlaZombi : MonoBehaviour
 
     void AtacaJogador(){
 
+        PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
+        playerScript.TextoGameOver.SetActive(true);
         Time.timeScale = 0;
+        playerScript.Vivo = false;
     }
 
     void Morrer(){

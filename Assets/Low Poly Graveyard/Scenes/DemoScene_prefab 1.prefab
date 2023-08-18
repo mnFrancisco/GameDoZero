@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1961954922}
   - component: {fileID: 1961954921}
   - component: {fileID: 1961954920}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1961954919}
   m_LocalRotation: {x: 0.7071068, y: -0.00000004214685, z: 0.00000004214685, w: 0.7071068}
   m_LocalPosition: {x: 0.95099974, y: -0.54, z: 0.04}
-  m_LocalScale: {x: 0.9282432, y: 0.45489088, z: 0.8330655}
+  m_LocalScale: {x: 20.638306, y: 10.113919, z: 22.398836}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4789462980028796}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79cf9b1e0ef79bf489280ddf77bdecda, type: 2}
+  - {fileID: 2100000, guid: c7e151c6881c0c048a941206cc5c8c90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4789462980028796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DemoScene_prefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 1288249549105614}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 6.109, y: 0.90362, z: -1.7687}
-  m_LocalScale: {x: 1, y: 0.92517, z: 1}
+  m_LocalScale: {x: 2.055457, y: 1.6368109, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961954923}

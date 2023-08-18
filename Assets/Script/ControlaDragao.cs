@@ -5,13 +5,14 @@ using UnityEngine;
 public class ControlaDragao : MonoBehaviour
 {
     public GameObject Player;
-    public GameObject Alvo;
+    //public GameObject Alvo;
     public float Velocidade = 5;
     public float areaAtaque = 5;
     public int dano = 1;
     public int vida = 3;
-
     public float areaPerseguicao = 10; 
+
+    
     public void SofrerDano(int dano){
 
         vida -= dano;
@@ -52,7 +53,7 @@ public class ControlaDragao : MonoBehaviour
             GetComponent<Animator>().SetBool("Ataque", false); // Não ataca se o jogador estiver fora da área de perseguição
         }
 
-        // Vai atras do Zumbi
+        /*// Vai atras do Zumbi
         float distanciaAlvo = Vector3.Distance(transform.position, Alvo.transform.position);
 
         if (distanciaAlvo <= areaPerseguicao){
@@ -79,17 +80,22 @@ public class ControlaDragao : MonoBehaviour
 
             GetComponent<Animator>().SetBool("Correndo", false);
             GetComponent<Animator>().SetBool("Ataque", false); // Não ataca se o jogador estiver fora da área de perseguição
-        }
+        }*/
     }
 
     void AtacaJogador(){
 
-        ControlaZombi jogador = Player.GetComponent<ControlaZombi>();
+        /*ControlaZombi jogador = Player.GetComponent<ControlaZombi>();
 
         if (jogador != null){
 
             jogador.SofrerDano(dano); // Substitua 'dano' pelo valor adequado
-        }
+        }*/
+
+        PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
+        playerScript.TextoGameOver.SetActive(true);
+        Time.timeScale = 0;
+        playerScript.Vivo = false;
 
     }
 
