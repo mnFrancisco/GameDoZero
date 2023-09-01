@@ -92,10 +92,9 @@ public class ControlaDragao : MonoBehaviour
             jogador.SofrerDano(dano); // Substitua 'dano' pelo valor adequado
         }*/
 
+        int dano = Random.Range(50, 60);
         PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
-        playerScript.TextoGameOver.SetActive(true);
-        Time.timeScale = 0;
-        playerScript.Vivo = false;
+        playerScript.TomarDano(dano);
 
     }
 

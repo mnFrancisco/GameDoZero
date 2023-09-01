@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float Velocidade = 8;
-    public int Vida = 10;
+    public int Vida = 100;
+    public ControlaIterface scriptControlaInteface;
 
     public bool Vivo = true;
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
+
     private Vector3 direcao;
 
     void Start(){
@@ -66,6 +68,17 @@ public class PlayerBehavior : MonoBehaviour
             Quaternion novaRotacao = Quaternion.LookRotation(posicaoMiraJogador);
             GetComponent<Rigidbody>().MoveRotation(novaRotacao);
         }
+    }
+
+    public void TomarDano (int dano)
+    {
+        Vida -= dano;
+        scriptControlaInteface.AtualizaSlideVidaJogador();
+        if (Vida <= 0)
+            {
+                Time.timeScale = 0;
+                TextoGameOver.SetActive(true);
+            }
     }
 
 

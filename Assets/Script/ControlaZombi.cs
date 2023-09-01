@@ -45,10 +45,9 @@ public class ControlaZombi : MonoBehaviour
 
     void AtacaJogador(){
 
+        int dano = Random.Range(10, 20);
         PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
-        playerScript.TextoGameOver.SetActive(true);
-        Time.timeScale = 0;
-        playerScript.Vivo = false;
+        playerScript.TomarDano(dano);
     }
 
     void Morrer(){
