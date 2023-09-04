@@ -12,6 +12,7 @@ public class PlayerBehavior : MonoBehaviour
     public bool Vivo = true;
     public LayerMask MascaraChao;
     public GameObject TextoGameOver;
+    public AudioClip SomDeDano;
 
     private Vector3 direcao;
 
@@ -74,6 +75,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         Vida -= dano;
         scriptControlaInteface.AtualizaSlideVidaJogador();
+        ControlaAldio.instance.PlayOneShot(SomDeDano);
         if (Vida <= 0)
             {
                 Time.timeScale = 0;

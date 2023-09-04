@@ -152,4 +152,6 @@ MonoBehaviour:
   Player: {fileID: 150860877462227908, guid: db01d4c64515f7e4f9e47604a9edd09b, type: 3}
   Velocidade: 10
   areaAtake: 7
+  SomDeMorte: {fileID: 8300000, guid: 641d10973d359e448a14969f39abab2e, type: 3}
+  SomDoZumbi: {fileID: 8300000, guid: 13d7c73139881264383570942200a50d, type: 3}
   vida: 3

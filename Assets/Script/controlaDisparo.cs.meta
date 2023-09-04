@@ -3,7 +3,10 @@ guid: 639aa0f9e42f96f45aba86fe2f26deaa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Disparo: {instanceID: 0}
+  - Bala: {instanceID: 0}
+  - SomDeDano: {fileID: 8300000, guid: 4e892207c3387c14aaa2839210ab91bd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

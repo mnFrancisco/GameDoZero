@@ -8,11 +8,17 @@ public class ControlaDragao : MonoBehaviour
     //public GameObject Alvo;
     public float Velocidade = 5;
     public float areaAtaque = 5;
-    public int dano = 1;
+    public int dano1 = 5;
+    public int dano2 = 5;
     public int vida = 3;
     public float areaPerseguicao = 10; 
 
-    
+    public AudioClip SomDoDragon;
+
+    public void Start(){
+        ControlaAldio.instance.PlayOneShot(SomDoDragon);
+    }
+
     public void SofrerDano(int dano){
 
         vida -= dano;
@@ -52,54 +58,17 @@ public class ControlaDragao : MonoBehaviour
             GetComponent<Animator>().SetBool("Correndo", false);
             GetComponent<Animator>().SetBool("Ataque", false); // Não ataca se o jogador estiver fora da área de perseguição
         }
-
-        /*// Vai atras do Zumbi
-        float distanciaAlvo = Vector3.Distance(transform.position, Alvo.transform.position);
-
-        if (distanciaAlvo <= areaPerseguicao){
-
-            Vector3 direcaoAlvo = Alvo.transform.position - transform.position;
-            Quaternion novaRotacaoAlvo = Quaternion.LookRotation(direcaoAlvo);
-
-            GetComponent<Rigidbody>().MoveRotation(novaRotacaoAlvo);
-            GetComponent<Animator>().SetBool("Correndo", true);
-
-            if (distanciaAlvo > areaAtaque){
-
-                Vector3 direcao = Alvo.transform.position - transform.position;
-                GetComponent<Rigidbody>().MovePosition(
-                    GetComponent<Rigidbody>().position +
-                    (direcao.normalized * Velocidade * Time.deltaTime));
-                GetComponent<Animator>().SetBool("Ataque", false);
-            }
-            else{
-                
-                GetComponent<Animator>().SetBool("Ataque", true);
-            }
-        }else{
-
-            GetComponent<Animator>().SetBool("Correndo", false);
-            GetComponent<Animator>().SetBool("Ataque", false); // Não ataca se o jogador estiver fora da área de perseguição
-        }*/
     }
 
     void AtacaJogador(){
 
-        /*ControlaZombi jogador = Player.GetComponent<ControlaZombi>();
-
-        if (jogador != null){
-
-            jogador.SofrerDano(dano); // Substitua 'dano' pelo valor adequado
-        }*/
-
-        int dano = Random.Range(50, 60);
+        int dano = Random.Range(dano1, dano2);
         PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
         playerScript.TomarDano(dano);
 
     }
 
     void Morrer(){
-
         Destroy(gameObject, 0.1f); // Destrua o objeto do inimigo após um tempo
     }
 }

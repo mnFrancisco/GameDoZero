@@ -8,6 +8,12 @@ public class ControlaZombi : MonoBehaviour
     public float Velocidade = 5;
     public float areaAtake = 5;
 
+    public int dano1 = 5;
+    public int dano2 = 5;
+
+    public AudioClip SomDeMorte;
+    public AudioClip SomDoZumbi;
+
     public int vida = 3;
 
     public void SofrerDano(int dano){
@@ -20,6 +26,7 @@ public class ControlaZombi : MonoBehaviour
 
     void Start(){
         Player = GameObject.FindWithTag("Player");
+        ControlaAldio.instance.PlayOneShot(SomDoZumbi);
     }
 
     void FixedUpdate(){
@@ -45,13 +52,13 @@ public class ControlaZombi : MonoBehaviour
 
     void AtacaJogador(){
 
-        int dano = Random.Range(10, 20);
+        int dano = Random.Range(dano1, dano2);
         PlayerBehavior playerScript = Player.GetComponent<PlayerBehavior>();
         playerScript.TomarDano(dano);
     }
 
     void Morrer(){
-
+        ControlaAldio.instance.PlayOneShot(SomDeMorte);
         Destroy(gameObject, 0.1f); // Destrua o objeto do inimigo após um tempo
     }
 }
